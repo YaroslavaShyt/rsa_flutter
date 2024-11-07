@@ -95,44 +95,47 @@ class _RSAHomePageState extends State<RSAHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('RSA Encryption App')),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextField(
-            controller: _plaintextController,
-            decoration: const InputDecoration(
-              labelText: 'Enter Plaintext',
-              border: OutlineInputBorder(),
+      body: Container(
+        padding: const EdgeInsetsDirectional.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ElevatedButton(
+              onPressed: generateKeys,
+              child: const Text('Generate RSA Keys'),
             ),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: generateKeys,
-            child: const Text('Generate RSA Keys'),
-          ),
-          const SizedBox(height: 8),
-          ElevatedButton(
-            onPressed: encryptText,
-            child: const Text('Encrypt'),
-          ),
-          const SizedBox(height: 8),
-          ElevatedButton(
-            onPressed: decryptText,
-            child: const Text('Decrypt'),
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            'Encrypted Text (Base64):',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SelectableText(encryptedText),
-          const SizedBox(height: 16),
-          const Text(
-            'Decrypted Text:',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SelectableText(decryptedText),
-        ],
+            const SizedBox(height: 8),
+            TextField(
+              controller: _plaintextController,
+              decoration: const InputDecoration(
+                labelText: 'Enter Plaintext',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: encryptText,
+              child: const Text('Encrypt'),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Encrypted Text (Base64):',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SelectableText(encryptedText),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: decryptText,
+              child: const Text('Decrypt'),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Decrypted Text:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SelectableText(decryptedText),
+          ],
+        ),
       ),
     );
   }
